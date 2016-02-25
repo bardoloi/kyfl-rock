@@ -1,20 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import '../scss/dashboard.scss';
-import { Paper, IconButton } from 'material-ui';
+import { Paper } from 'material-ui';
+import DashboardItem from '../components/DashboardItem.jsx';
 
-const DashboardItem = () => (
-  <div>
-    <div>{`7.5 / 12`}</div>
-    <div>{`62.5%`}</div>
-    <div>{`People on the Bench`}</div>
-    <div><IconButton iconClassName="fa fa-plus-circle" /></div>
-  </div>
-);
-
-const DashboardComponent = () => (
+const Dashboard = ({ onAddClick }) => (
   <div className="dashboard-wrapper">
     <Paper className="dashboard-item" zDepth={1}>
-      <DashboardItem />
+      <DashboardItem onAddClick={onAddClick} />
     </Paper>
     <Paper className="dashboard-item" zDepth={1}/>
     <Paper className="dashboard-item" zDepth={1}/>
@@ -22,6 +14,10 @@ const DashboardComponent = () => (
     <Paper className="dashboard-item" zDepth={1}/>
     <Paper className="dashboard-item" zDepth={1}/>
   </div>
-)
+);
 
-export default DashboardComponent;
+Dashboard.propTypes = {
+  onAddClick: PropTypes.func.isRequired
+};
+
+export default Dashboard;
