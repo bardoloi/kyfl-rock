@@ -1,0 +1,14 @@
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 90%;
+  margin: 0 auto;
+
+  .dashboard-item {
+    border-left: 3px solid red;
+    width: 400px;
+    height: 200px;
+    margin: 30px;
+  }
+}
