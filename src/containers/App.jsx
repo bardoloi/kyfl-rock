@@ -1,14 +1,14 @@
 import React from 'react';
-import {AppBar} from 'material-ui';
+import { AppBar, FlatButton } from 'material-ui';
 
-import DashboardContainer from '../containers/DashboardContainer.jsx';
+import AppBarContainer from '../containers/AppBarContainer.jsx';
 import NotificationContainer from '../containers/NotificationContainer.jsx';
 
-const App = () => (
+const App = ({ children }) => (
   <div>
-    <AppBar title={`KYFL ROCK`} showMenuIconButton={false}  />
-    <DashboardContainer />
-    <NotificationContainer />
+      <AppBarContainer />
+      { children }
+      <NotificationContainer />
   </div>
 );
 

@@ -1,9 +1,5 @@
 import * as NotificationActions from '../constants/notificationConstants';
-
-const initialState = {
-  message: ''
-  ,title: ''
-};
+import initialState from '../utils/initialState';
 
 export default function notificationReducer(state = initialState, action) {
   switch (action.type) {
