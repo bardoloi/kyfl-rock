@@ -1,13 +1,15 @@
 import {connect} from 'react-redux';
-import DashboardComponent from '../components/Dashboard.jsx';
+import Notification from '../components/Notification.jsx';
 
 const mapStateToProps = (state) => {
   return {
+    title: state.notification.title
+    ,message: state.notification.message
   };
 }
 
-const DashboardContainer = connect(
+const NotificationContainer = connect(
   mapStateToProps
-)(DashboardComponent);
+)(Notification);
 
-export default DashboardContainer;
+export default NotificationContainer;

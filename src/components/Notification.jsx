@@ -3,7 +3,7 @@ import {ToastContainer, ToastMessage} from 'react-toastr';
 
 const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
-class NotificationComponent extends Component {
+class Notification extends Component {
 
   constructor(props) {
     super(props);
@@ -38,4 +38,4 @@ class NotificationComponent extends Component {
   }
 }
 
-export default NotificationComponent;
+export default Notification;

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import NotificationComponent from '../components/Notification.jsx';
+import Notification from '../components/Notification.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,8 +8,8 @@ const mapStateToProps = (state) => {
   };
 }
 
-const ConnectedNotificationContainer = connect(
+const NotificationContainer = connect(
   mapStateToProps
-)(NotificationComponent);
+)(Notification);
 
-export default ConnectedNotificationContainer;
+export default NotificationContainer;

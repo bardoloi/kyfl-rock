@@ -6,7 +6,7 @@ import NotificationContainer from '../containers/NotificationContainer.jsx';
 
 const App = () => (
   <div>
-    <AppBar showMenuIconButton={false} title={`KYFL - OKR`} />
+    <AppBar title={`KYFL ROCK`} showMenuIconButton={false}  />
     <DashboardContainer />
     <NotificationContainer />
   </div>
