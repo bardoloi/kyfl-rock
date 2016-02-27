@@ -20,7 +20,8 @@ $small-screen: 500px;
 
 			@media screen and (max-width: $small-screen) {
 				padding: 5px !important;
-				line-height: 30px;
+				display: flex;
+				align-items: center;
 			}
 		}
 
