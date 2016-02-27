@@ -15,6 +15,7 @@ const DashboardContainer = ({ dashboard }) => {
       { goals.map((goalKey) => (
         <Card key={ goalKey } className="dashboard-widget">
           <CardHeader
+            className="dashboard-widget-header"
             title={ <span className="dashboard-widget-title">{ dashboard[goalKey].title }</span> }
             subtitle={ <span className="dashboard-widget-subtitle">{ dashboard[goalKey].value + ` / ` + dashboard[goalKey].limit }</span> }
             avatar={ <Avatar size={ 60 } src={ dashboard[goalKey].avatar } /> }

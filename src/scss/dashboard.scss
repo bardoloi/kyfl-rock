@@ -1,3 +1,5 @@
+$small-screen: 500px;
+
 .dashboard-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -7,18 +9,40 @@
 	max-width: 1024px;
 
 	.dashboard-widget {
-		min-width: 450px;
-		min-height: 150px;
+		width: 450px;
+		height: 135px;
 		margin: 15px;
 		padding: 20px 5px;
 		border-left: 3px solid red;
 
+		.dashboard-widget-header {
+			height: auto !important;
+
+			@media screen and (max-width: $small-screen) {
+				padding: 5px !important;
+				line-height: 30px;
+			}
+		}
+
+		@media screen and (max-width: $small-screen) {
+			height: auto;
+			padding: 5px 0;
+		}
+
 		.dashboard-widget-title {
-			font-size: 30px;
+			font-size: 26px;
+
+			@media screen and (max-width: $small-screen) {
+				font-size: 14px;
+			}
 		}
 
 		.dashboard-widget-subtitle {
-			font-size: 26px;
+			font-size: 24px;
+
+			@media screen and (max-width: $small-screen) {
+				font-size: 14px;
+			}
 		}
 	}
 }
