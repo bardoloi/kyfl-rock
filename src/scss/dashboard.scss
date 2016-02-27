@@ -17,11 +17,16 @@ $small-screen: 500px;
 
 		.dashboard-widget-header {
 			height: auto !important;
+			display: flex;
+			align-items: center;
 
 			@media screen and (max-width: $small-screen) {
 				padding: 5px !important;
-				display: flex;
-				align-items: center;
+			}
+
+			.dashboard-widget-iconmenu {
+				position: absolute !important;
+				right: 0;
 			}
 		}
 
