@@ -1,32 +1,25 @@
-import {
-  ATTEMPTING_LOGIN,
-  LOGOUT,
-  LOGIN_USER,
-  AWAITING_AUTH_RESPONSE,
-  ANONYMOUS,
-  LOGGED_IN
-} from '../constants/authConstants';
+import * as authConst from '../constants/authConstants';
 import initialState from '../utils/initialState';
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case ATTEMPTING_LOGIN:
+    case authConst.ATTEMPTING_LOGIN:
       return {
-        currently: AWAITING_AUTH_RESPONSE,
+        currently: authConst.AWAITING_AUTH_RESPONSE,
         username: 'guest',
         uid: null
       };
 
-    case LOGOUT:
+    case authConst.LOGOUT:
       return {
-        currently: ANONYMOUS,
+        currently: authConst.ANONYMOUS,
         username: 'guest',
         uid: null
       };
 
-    case LOGIN_USER:
+    case authConst.LOGIN_USER:
       return {
-        currently: LOGGED_IN,
+        currently: authConst.LOGGED_IN,
         username: action.username,
         uid: action.uid
       };

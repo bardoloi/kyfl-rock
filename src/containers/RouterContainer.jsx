@@ -1,10 +1,14 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
-import App from '../containers/App.jsx';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import AppContainer from '../containers/AppContainer.jsx';
+import DashboardContainer from '../containers/DashboardContainer.jsx';
 
 const AppRoutes = () => (
   <Router history={ browserHistory }>
-    <Route path="/" component={ App }></Route>
+    <Route path="/" component={ AppContainer }>
+      <IndexRoute component={ DashboardContainer } />
+    </Route>
   </Router>
 );
 

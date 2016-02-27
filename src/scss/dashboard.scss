@@ -1,0 +1,24 @@
+.dashboard-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	margin: 10px auto;
+	max-width: 1024px;
+
+	.dashboard-widget {
+		min-width: 450px;
+		min-height: 150px;
+		margin: 15px;
+		padding: 20px 5px;
+		border-left: 3px solid red;
+
+		.dashboard-widget-title {
+			font-size: 30px;
+		}
+
+		.dashboard-widget-subtitle {
+			font-size: 26px;
+		}
+	}
+}
