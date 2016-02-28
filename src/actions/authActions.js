@@ -1,33 +1,33 @@
-import * as authConst from '../constants/authConstants';
+import * as constants from '../constants';
 import Firebase from 'firebase';
 
-const fireRef = new Firebase(authConst.FIREBASE);
+const fireRef = new Firebase(constants.FIREBASE);
 
 export const startListeningToAuth = () => (dispatch, getState) => {
   fireRef.onAuth(function(authData) {
     if (authData) {
       dispatch({
-        type: authConst.LOGIN_USER,
+        type: constants.LOGIN_USER,
         uid: authData.uid,
         username: authData.google.displayName || authData.google.username
       });
-    } else if (getState().auth.currently !== authConst.ANONYMOUS) {
-      dispatch({ type: authConst.LOGOUT });
+    } else if (getState().auth.currently !== constants.ANONYMOUS) {
+      dispatch({ type: constants.LOGOUT });
     }
   });
 };
 
 export const attemptLogin = () => (dispatch, getState) => {
-  dispatch({ type: authConst.ATTEMPTING_LOGIN });
+  dispatch({ type: constants.ATTEMPTING_LOGIN });
   fireRef.authWithOAuthPopup('google', function(error, authData) {
     if (error) {
-      dispatch({ type: authConst.DISPLAY_ERROR, error: 'Login failed! ' + error });
-      dispatch({ type: authConst.LOGOUT });
+      dispatch({ type: constants.DISPLAY_ERROR, error: 'Login failed! ' + error });
+      dispatch({ type: constants.LOGOUT });
     }
   });
 };
 
 export const logoutUser = () => (dispatch, getState) => {
-  dispatch({ type: authConst.LOGOUT });
+  dispatch({ type: constants.LOGOUT });
   fireRef.unauth();
 };

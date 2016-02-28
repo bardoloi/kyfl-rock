@@ -3,13 +3,9 @@ import Notification from '../components/Notification.jsx';
 
 const mapStateToProps = (state) => {
   return {
-    title: state.notification.title
-    ,message: state.notification.message
+    title: state.notification.title,
+    message: state.notification.message
   };
 }
 
-const NotificationContainer = connect(
-  mapStateToProps
-)(Notification);
-
-export default NotificationContainer;
+export default connect(mapStateToProps)(Notification);

@@ -1,12 +1,14 @@
-import * as NotificationActions from '../constants/notificationConstants';
+import * as constants from '../constants';
 import initialState from '../utils/initialState';
 
-export default function notificationReducer(state = initialState, action) {
+const notificationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case NotificationActions.RECEIVE_MESSAGE:
+    case constants.RECEIVE_MESSAGE:
       return Object.assign({}, state, action.payload);
 
     default:
         return state;
   }
-}
+};
+
+export default notificationReducer;

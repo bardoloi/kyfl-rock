@@ -1,15 +1,24 @@
+// misc
 import 'file?name=[name].[ext]!./index.html';
 import 'babel-polyfill';
 import 'fastclick';
 import 'font-awesome-sass-loader';
 import './scss/main.scss';
+
+// linbraries and tools
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// store
 import store from './stores';
-import { startListeningToAuth } from './actions/authActions';
-import RouterContainer from './containers/RouterContainer.jsx';
+
+// actions
+import * as authActions from './actions/authActions';
+
+// components
+import AppContainer from './containers/AppContainer.jsx';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -18,12 +27,13 @@ import RouterContainer from './containers/RouterContainer.jsx';
 injectTapEventPlugin();
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <RouterContainer />
+  <Provider store={store}>
+    <AppContainer />
   </Provider>,
-  document.getElementById('container')
+  document.getElementById('app')
 );
 
+// on load start listening to authorization actions
 setTimeout(function(){
-    store.dispatch(startListeningToAuth());
+    store.dispatch(authActions.startListeningToAuth());
 });

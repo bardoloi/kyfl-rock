@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
+
+// custom reducers
 import auth from '../reducers/authReducer';
 import notification from '../reducers/notificationReducer';
-import dashboard from '../reducers/dashboardReducer';
+import widgetList from '../reducers/widgetListReducer';
 
 const rootReducer = combineReducers({
   auth,
   notification,
-  dashboard
+  widgetList
 });
 
 export default rootReducer;

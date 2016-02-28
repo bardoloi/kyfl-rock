@@ -1,11 +1,11 @@
-import * as NotificationActions from '../constants/notificationConstants';
+import * as constants from '../constants';
 
-export function displayNotification(title, message) {
+export const displayNotification = (title, message) => {
   return {
-    type: NotificationActions.RECEIVE_MESSAGE
-    ,payload: Object.assign({}, {
-      title: title
-      ,message: message
+    type: constants.RECEIVE_MESSAGE,
+    payload: Object.assign({}, {
+      title: title,
+      message: message
     })
   }
-}
+};

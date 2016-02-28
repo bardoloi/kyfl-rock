@@ -1,8 +1,8 @@
-import * as authConst from '../constants/authConstants';
+import * as constants from '../constants';
 
 export default {
   auth: {
-    currently: authConst.ANONYMOUS,
+    currently: constants.ANONYMOUS,
     username: null,
     uid: null
   },
@@ -10,7 +10,7 @@ export default {
     message: null,
     title: null
   },
-  dashboard: {
+  widgetList: {
     0: { title: 'People on the Bench', value: 0, limit: 0, avatar: 'http://lorempixel.com/100/100/people/' },
     1: { title: 'Generated Leads', value: 0, limit: 0, avatar: 'http://lorempixel.com/100/100/business/' },
     2: { title: 'Network Meetups', value: 0, limit: 0, avatar: 'http://lorempixel.com/100/100/transport/' },

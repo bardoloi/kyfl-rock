@@ -1,11 +1,10 @@
 import React from 'react';
-import * as authConst from '../constants/authConstants';
+import * as constants from '../constants';
 
 // material-ui components
 import FlatButton from 'material-ui/lib/flat-button';
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
-import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -15,7 +14,7 @@ const AppMainBar = ({ auth, logoutUser, attemptLogin, onLoginSuccess, onLogoutSu
   let iconElementRight = null;
 
   switch (auth.currently) {
-    case authConst.LOGGED_IN:
+    case constants.LOGGED_IN:
       iconElementRight = (
         <IconMenu
           iconButtonElement={ <IconButton><MoreVertIcon /></IconButton> }
@@ -32,7 +31,7 @@ const AppMainBar = ({ auth, logoutUser, attemptLogin, onLoginSuccess, onLogoutSu
       );
       break;
 
-    case authConst.AWAITING_AUTH_RESPONSE:
+    case constants.AWAITING_AUTH_RESPONSE:
       iconElementRight = (
         <FlatButton label={`authenticating...`} icon={ <i className="fa fa-spinner fa-spin"></i> } />
       );

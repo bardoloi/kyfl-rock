@@ -1,25 +1,25 @@
-import * as authConst from '../constants/authConstants';
+import * as constants from '../constants';
 import initialState from '../utils/initialState';
 
-export default function authReducer(state = initialState, action) {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case authConst.ATTEMPTING_LOGIN:
+    case constants.ATTEMPTING_LOGIN:
       return {
-        currently: authConst.AWAITING_AUTH_RESPONSE,
+        currently: constants.AWAITING_AUTH_RESPONSE,
         username: 'guest',
         uid: null
       };
 
-    case authConst.LOGOUT:
+    case constants.LOGOUT:
       return {
-        currently: authConst.ANONYMOUS,
+        currently: constants.ANONYMOUS,
         username: 'guest',
         uid: null
       };
 
-    case authConst.LOGIN_USER:
+    case constants.LOGIN_USER:
       return {
-        currently: authConst.LOGGED_IN,
+        currently: constants.LOGGED_IN,
         username: action.username,
         uid: action.uid
       };
@@ -27,4 +27,6 @@ export default function authReducer(state = initialState, action) {
     default:
         return state;
   }
-}
+};
+
+export default authReducer;

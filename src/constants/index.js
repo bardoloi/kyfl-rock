@@ -15,3 +15,10 @@ export const	DISMISS_FEEDBACK = 'DISMISS_FEEDBACK';
 
 // misc
 export const FIREBASE = 'https://kyfl-rock.firebaseio.com';
+
+// notification
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+
+// dashboard
+export const INCREASE_WIDGET_VALUE = 'INCREASE_WIDGET_VALUE';
+export const DECREASE_WIDGET_VALUE = 'DECREASE_WIDGET_VALUE';
