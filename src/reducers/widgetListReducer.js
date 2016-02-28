@@ -1,12 +1,9 @@
 import * as constants from '../constants';
 
 const widgetReducer = (state, action) => {
-  if (state.id !== action.id) {
-    return state;
-  }
-
   switch (action.type) {
     case constants.INCREASE_WIDGET_VALUE:
+      debugger;
       if (state.value < state.limit) {
         return Object.assign({}, state, { value: state.value + 1 });
       } else {
@@ -32,6 +29,9 @@ const widgetListReducer = (state = [], action) => {
 
     case constants.DECREASE_WIDGET_VALUE:
       return Object.getOwnPropertyNames(state).map(key => widgetReducer(state[key], action));
+
+    case constants.RECEIVE_WIDGETLIST_DATA:
+      return Object.assign({}, state, action.data);
 
     default:
         return state;

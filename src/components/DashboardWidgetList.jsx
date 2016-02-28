@@ -3,16 +3,17 @@ import '../scss/dashboard.scss';
 
 import DashboardWidget from '../components/DashboardWidget.jsx';
 
-const DashboardWidgetList = ({ widgetList, onIncrease, onDecrease }) => {
+const DashboardWidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
     <div className="dashboard-wrapper">
       {properties.map((key) => (
         <DashboardWidget
+          allowEdit={allowEdit}
           key={key}
-          onDecrease={() => onDecrease(widgetList[key].id)}
-          onIncrease={() => onIncrease(widgetList[key].id)}
+          onDecrease={() => onDecrease(key)}
+          onIncrease={() => onIncrease(key)}
           widgetData={widgetList[key]}
         />
       ))}

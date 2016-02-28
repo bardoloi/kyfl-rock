@@ -16,6 +16,7 @@ import store from './stores';
 
 // actions
 import * as authActions from './actions/authActions';
+import * as widgetListActions from './actions/widgetListActions';
 
 // components
 import AppContainer from './containers/AppContainer.jsx';
@@ -36,4 +37,5 @@ ReactDOM.render(
 // on load start listening to authorization actions
 setTimeout(function(){
     store.dispatch(authActions.startListeningToAuth());
+    store.dispatch(widgetListActions.startListeningToWidgetList());
 });

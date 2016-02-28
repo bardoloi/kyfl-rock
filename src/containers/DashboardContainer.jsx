@@ -5,6 +5,7 @@ import DashboardWidgetList from '../components/DashboardWidgetList.jsx';
 
 const mapStateToProps = (state) => {
   return {
+    allowEdit: state.auth.uid,
     widgetList: state.widgetList
   };
 };
