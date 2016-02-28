@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import * as widgetListActions from '../actions/widgetListActions';
 import DashboardWidgetList from '../components/DashboardWidgetList.jsx';
 
 const mapStateToProps = (state) => {
@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onDecrease: (id) => dispatch(widgetListActions.decreaseWidgetValue(id)),
+    onIncrease: (id) => dispatch(widgetListActions.increaseWidgetValue(id))
   };
 };
 

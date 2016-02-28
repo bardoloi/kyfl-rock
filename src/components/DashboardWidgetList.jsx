@@ -11,8 +11,8 @@ const DashboardWidgetList = ({ widgetList, onIncrease, onDecrease }) => {
       {properties.map((key) => (
         <DashboardWidget
           key={key}
-          onDecrease={onDecrease}
-          onIncrease={onIncrease}
+          onDecrease={() => onDecrease(widgetList[key].id)}
+          onIncrease={() => onIncrease(widgetList[key].id)}
           widgetData={widgetList[key]}
         />
       ))}
