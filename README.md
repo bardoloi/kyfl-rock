@@ -1,7 +1,7 @@
 kyfl-rock
 ============
 
-UNDER CONSTRUCTION!
+Real-time dashboard using Firebase, React, Redux and Webpack. Supports Google oAuth for editing.
 
 ---
 
