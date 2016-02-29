@@ -1,25 +1,37 @@
 $small-screen: 500px;
+$red: #E91010;
+$orange: #FF9E1E;
+$green: #0AD54B;
 
 .widget {
     width: 450px;
     height: 135px;
     margin: 15px;
     padding: 20px 5px;
-    border-left: 3px solid red;
+
+    &.red {
+        border-left: 4px solid $red;
+    }
+    &.orange {
+        border-left: 4px solid $orange;
+    }
+    &.green {
+        border-left: 4px solid $green;
+    }
 
     .widget-header {
-        height: auto !important;
-        display: flex;
-        align-items: center;
+      height: auto !important;
+      display: flex;
+      align-items: center;
 
-        @media screen and (max-width: $small-screen) {
-            padding: 5px !important;
-        }
+      @media screen and (max-width: $small-screen) {
+          padding: 5px !important;
+      }
 
-        .widget-iconmenu {
-            position: absolute !important;
-            right: 0;
-        }
+      .widget-iconmenu {
+          position: absolute !important;
+          right: 0;
+      }
     }
 
     @media screen and (max-width: $small-screen) {
