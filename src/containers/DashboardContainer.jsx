@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as widgetListActions from '../actions/widgetListActions';
-import DashboardWidgetList from '../components/DashboardWidgetList.jsx';
+import WidgetList from '../components/WidgetList.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardWidgetList);
+export default connect(mapStateToProps, mapDispatchToProps)(WidgetList);
