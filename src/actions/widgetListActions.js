@@ -17,7 +17,7 @@ export const decreaseWidgetValue = (key) => () => {
 
 export const increaseWidgetValue = (key) => () => {
   goalsRef.child(key).transaction((data) => {
-    data.value = data.value < data.limit ? data.value + 1 : data.value;
+    data.value = data.value + 1;
     return data;
 
   }, (error) => {

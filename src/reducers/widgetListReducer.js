@@ -4,11 +4,7 @@ const widgetReducer = (state, action) => {
   switch (action.type) {
     case constants.INCREASE_WIDGET_VALUE:
       debugger;
-      if (state.value < state.limit) {
-        return Object.assign({}, state, { value: state.value + 1 });
-      } else {
-        return state;
-      }
+      return Object.assign({}, state, { value: state.value + 1 });
 
     case constants.DECREASE_WIDGET_VALUE:
       if (state.value > 0) {
