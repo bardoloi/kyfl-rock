@@ -1,0 +1,45 @@
+$small-screen: 500px;
+
+.widget {
+    width: 450px;
+    height: 135px;
+    margin: 15px;
+    padding: 20px 5px;
+    border-left: 3px solid red;
+
+    .widget-header {
+        height: auto !important;
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: $small-screen) {
+            padding: 5px !important;
+        }
+
+        .widget-iconmenu {
+            position: absolute !important;
+            right: 0;
+        }
+    }
+
+    @media screen and (max-width: $small-screen) {
+        height: auto;
+        padding: 5px 0;
+    }
+
+    .widget-title {
+        font-size: 26px;
+
+        @media screen and (max-width: $small-screen) {
+            font-size: 14px;
+        }
+    }
+
+    .widget-subtitle {
+        font-size: 24px;
+
+        @media screen and (max-width: $small-screen) {
+            font-size: 14px;
+        }
+    }
+}

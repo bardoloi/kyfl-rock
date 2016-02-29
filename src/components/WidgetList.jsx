@@ -1,15 +1,15 @@
 import React from 'react';
-import '../scss/dashboard.scss';
+import '../scss/widget-list.scss';
 
-import DashboardWidget from '../components/DashboardWidget.jsx';
+import Widget from '../components/Widget.jsx';
 
-const DashboardWidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
+const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
     <div className="dashboard-wrapper">
       {properties.map((key) => (
-        <DashboardWidget
+        <Widget
           allowEdit={allowEdit}
           key={key}
           onDecrease={() => onDecrease(key)}
@@ -21,4 +21,4 @@ const DashboardWidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) 
   );
 };
 
-export default DashboardWidgetList;
+export default WidgetList;
