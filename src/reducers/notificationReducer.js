@@ -3,6 +3,9 @@ import initialState from '../utils/initialState';
 
 const notificationReducer = (state = initialState.notification, action) => {
   switch (action.type) {
+    case constants.CLEAR_MESSAGE:
+      return Object.assign({}, state, initialState.notification);
+
     case constants.RECEIVE_MESSAGE:
       return Object.assign({}, state, {
         title: action.title,

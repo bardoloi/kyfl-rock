@@ -12,7 +12,7 @@ class Notification extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.msg != nextProps.msg && nextProps.msg != '') {
+    if (this.props.msg != nextProps.msg && nextProps.msg) {
       this.addNotification(nextProps.title, nextProps.msg, nextProps.msgType);
     }
   }
@@ -32,7 +32,6 @@ class Notification extends Component {
         this.refs.container.info(msg, title, {timeOut: 3000, extendedTimeOut: 1000});
         break;
     }
-
   }
 
   render () {

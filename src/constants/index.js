@@ -13,6 +13,7 @@ export const FIREBASE = 'https://kyfl-rock.firebaseio.com';
 export const VALID_DOMAIN = '@headspring.com$';
 
 // notification
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 export const SUCCESS = 'SUCCESS';
 export const INFO = 'INFO';

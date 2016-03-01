@@ -19,7 +19,7 @@ export const startListeningToAuth = () => (dispatch, getState) => {
 
         dispatch({ type: constants.LOGOUT });
         fireRef.unauth();
-        dispatch(notificationActions.warning(`Your domain is not permitted!`));        
+        dispatch(notificationActions.warning(`Your domain is not permitted!`));
       }
 
     } else if (getState().auth.currently !== constants.ANONYMOUS) {
