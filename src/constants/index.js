@@ -8,16 +8,15 @@ export const LOGGED_IN = 'LOGGED_IN';
 export const ANONYMOUS = 'ANONYMOUS';
 export const AWAITING_AUTH_RESPONSE = 'AWAITING_AUTH_RESPONSE';
 
-// ui feedback actions
-export const DISPLAY_ERROR = 'DISPLAY_ERROR';
-export const	DISPLAY_MESSAGE = 'DISPLAY_MESSAGE';
-export const	DISMISS_FEEDBACK = 'DISMISS_FEEDBACK';
-
 // misc
 export const FIREBASE = 'https://kyfl-rock.firebaseio.com';
 
 // notification
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const SUCCESS = 'SUCCESS';
+export const INFO = 'INFO';
+export const WARNING = 'WARNING';
+export const ERROR = 'ERROR';
 
 // dashboard
 export const INCREASE_WIDGET_VALUE = 'INCREASE_WIDGET_VALUE';

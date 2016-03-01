@@ -4,7 +4,8 @@ import Notification from '../components/Notification.jsx';
 const mapStateToProps = (state) => {
   return {
     title: state.notification.title,
-    message: state.notification.message
+    msg: state.notification.msg,
+    msgType: state.notification.msgType
   };
 }
 
