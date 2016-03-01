@@ -33,7 +33,7 @@ export const attemptLogin = () => (dispatch, getState) => {
   dispatch({ type: constants.ATTEMPTING_LOGIN });
   fireRef.authWithOAuthPopup('google', (error, authData) => {
     if (error) {
-      dispatch(notificationActions.error(`Login failed!` + error));
+      dispatch(notificationActions.error(`Login failed! ` + error));
       dispatch({ type: constants.LOGOUT });
     }
   }, {
