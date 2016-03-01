@@ -13,9 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     attemptLogin: () => { dispatch(authActions.attemptLogin()); },
-    logoutUser: () => { dispatch(authActions.logoutUser()); },
-    onLoginSuccess: () => { dispatch(notificationActions.displayNotification(`Notification`, `Successfully signed in!`));  },
-    onLogoutSuccess: () => { dispatch(notificationActions.displayNotification(`Notification`, `Successfully signed out!`));  }
+    logoutUser: () => { dispatch(authActions.logoutUser()); }
   };
 };
 

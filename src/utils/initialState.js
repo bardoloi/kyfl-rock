@@ -7,8 +7,9 @@ export default {
     uid: null
   },
   notification: {
-    message: null,
-    title: null
+    msg: null,
+    title: null,
+    msgType: constants.INFO
   },
   widgetList: {}
 };

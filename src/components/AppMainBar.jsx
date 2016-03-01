@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Divider from 'material-ui/lib/divider';
 
-const AppMainBar = ({ auth, logoutUser, attemptLogin, onLoginSuccess, onLogoutSuccess }) => {
+const AppMainBar = ({auth, logoutUser, attemptLogin}) => {
   let iconElementRight = null;
 
   switch (auth.currently) {
@@ -23,10 +23,7 @@ const AppMainBar = ({ auth, logoutUser, attemptLogin, onLoginSuccess, onLogoutSu
         >
           <MenuItem primaryText={`Signed in as ` + auth.username} disabled />
           <Divider />
-          <MenuItem primaryText={`Log out`} onTouchTap={ () => {
-              logoutUser();
-              onLogoutSuccess();
-          } } />
+          <MenuItem primaryText={`Log out`} onTouchTap={logoutUser} />
         </IconMenu>
       );
       break;
@@ -39,10 +36,7 @@ const AppMainBar = ({ auth, logoutUser, attemptLogin, onLoginSuccess, onLogoutSu
 
     default:
       iconElementRight = (
-        <FlatButton label={`Log in`} onClick={ () => {
-            attemptLogin();
-            onLoginSuccess();
-        } } />
+        <FlatButton label={`Log in`} onClick={attemptLogin} />
       );
       break;
   }
