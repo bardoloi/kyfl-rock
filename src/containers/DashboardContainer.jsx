@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   return {
     allowEdit: state.auth.uid,
     widgetList: state.widgetList,
-    historyChart: state.historyChart
+    chartData: state.historyChart
   };
 };
 

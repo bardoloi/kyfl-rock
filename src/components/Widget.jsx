@@ -1,5 +1,6 @@
 import React from 'react';
 import '../scss/widget.scss';
+import Chart from '../components/Chart.jsx';
 
 // material-ui components
 import Card from 'material-ui/lib/card/card';
@@ -12,7 +13,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import Divider from 'material-ui/lib/divider';
 import FontIcon from 'material-ui/lib/font-icon';
 
-const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
+const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) => {
   let menuIcon = null, cardStatus = null, percentComplete = widgetData.value / widgetData.limit * 100;
 
   if (percentComplete < 50) {
@@ -56,6 +57,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}
+        <Chart chartData={chartData} />
       </CardHeader>
     </Card>
   );
