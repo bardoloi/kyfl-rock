@@ -2,8 +2,9 @@ import React from 'react';
 import '../scss/widget-list.scss';
 
 import Widget from '../components/Widget.jsx';
+import Chart from '../components/Chart.jsx';
 
-const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
+const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, historyChart }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
@@ -17,6 +18,7 @@ const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
           widgetData={widgetList[key]}
         />
       ))}
+      <Chart chartData={historyChart} />
     </div>
   );
 };
