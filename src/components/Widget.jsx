@@ -24,6 +24,8 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) =>
       cardStatus = "green";
   }
 
+  const chartWidget = chartData ? <Chart chartData={chartData} /> : null;
+
   if(allowEdit) {
     menuIcon = (
       <IconMenu
@@ -57,7 +59,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) =>
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}
-        <Chart chartData={chartData} />
+        {chartWidget}
       </CardHeader>
     </Card>
   );

@@ -14,7 +14,7 @@ export const startListeningToAuth = () => (dispatch, getState) => {
           username: authData.google.displayName || authData.google.username
         });
 
-        dispatch(notificationActions.success(`Successfully signed in!`));
+        dispatch(notificationActions.success(`Signed in as \n` + authData.google.email + `!`));
       } else {
 
         dispatch({ type: constants.LOGOUT });

@@ -1,7 +1,6 @@
 import * as constants from '../constants';
-import * as chartActions from '../actions/chartActions';
+import * as historyActions from '../actions/historyActions';
 import Firebase from 'firebase';
-import initialState from '../utils/initialState';
 
 const goalsRef = new Firebase(constants.FIREBASE).child('goals');
 
@@ -35,10 +34,6 @@ export const startListeningToWidgetList = () => (dispatch) => {
       type: constants.RECEIVE_WIDGETLIST_DATA,
       data: snapshot.val()
     });
-    dispatch(chartActions.receiveChartData(
-      initialState.historyChart.data,
-      initialState.historyChart.options,
-      initialState.historyChart.chartType
-    ));
+    dispatch(historyActions.startListeningToHistory());
 	});
 };

@@ -3,11 +3,11 @@ import '../scss/widget-list.scss';
 
 import Widget from '../components/Widget.jsx';
 
-const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, chartData }) => {
+const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, history }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
-    <div className="dashboard-wrapper">
+    <div className="widget-list-wrapper">
       {properties.map((key) => (
         <Widget
           allowEdit={allowEdit}
@@ -15,7 +15,7 @@ const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, chartData }
           onDecrease={() => onDecrease(key)}
           onIncrease={() => onIncrease(key)}
           widgetData={widgetList[key]}
-          chartData={chartData}
+          chartData={history[key]}
         />
       ))}
     </div>
