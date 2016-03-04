@@ -45,7 +45,7 @@
     "font-awesome": "^4.4.0",
     "font-awesome-sass-loader": "^1.0.1",
     "isomorphic-fetch": "^2.1.1",
-    "lodash": "^3.10.1",
+    "lodash": "^4.6.1",
     "material-ui": "^0.14.3",
     "node-sass": "^3.4.2",
     "object-assign": "^4.0.1",
