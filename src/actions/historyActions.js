@@ -1,95 +1,75 @@
 import * as constants from '../constants';
-// import _ from 'lodash';
+import _ from 'lodash';
 import Firebase from 'firebase';
 
-const goalsRef = new Firebase(constants.FIREBASE).child('history');
+const historyRef = new Firebase(constants.FIREBASE).child('history');
 
-// const mapToHistory = (data) => {
-// 	let history = {
-// 		data: {},
-// 		options: {
-// 	    axisY: {
-// 	      showLabel: false,
-// 	      showGrid: false
-// 	    },
-// 	    axisX: {
-// 	      showLabel: false,
-// 	      showGrid: false
-// 	    },
-// 	    stackBars: true,
-// 	    chartPadding: {
-// 	      top: 0,
-// 	      right: 0,
-// 	      bottom: 0,
-// 	      left: 0
-// 	    }
-// 	  },
-// 		chartType: 'Bar'
-// 	};
-//
-// 	const labels = _.uniq(data.map(item => ((new Date(item.created)).getWeek())));
-// 	const limits = _.uniq(data.map(item => ((new Date(item.created)).getWeek())));
-//
-// 	Object.assign(history.data, {
-// 		labels: labels,
-// 		series: [
-// 			Object.getOwnPropertyNames(data).map((key) => data[])
-// 		]
-// 	});
-//
-// 	return history;
-// };
+const getDefaultChartOptions = () => {
+	return {
+		data: {},
+		options: {
+			axisY: {
+				showLabel: false,
+				showGrid: false
+			},
+			axisX: {
+				showLabel: false,
+				showGrid: false
+			},
+			stackBars: true,
+			chartPadding: {
+				top: 0,
+				right: 0,
+				bottom: 0,
+				left: 0
+			}
+		},
+		chartType: 'Bar'
+	};
+};
+
+const mapToHistory = (data) => {
+	let history = Object.assign(getDefaultChartOptions(), { data: {}});
+
+	// determine week number from created date
+	const iteration0 = Object.getOwnPropertyNames(data).map(key => {
+		const item = data[key];
+		const tmpDate = new Date(item.created);
+		return {
+			created: new Date(item.created),
+			label: 'W' + tmpDate.getWeek(),
+			limit: item.currentLimit,
+			value: item.currentValue
+		}
+	});
+
+	// group by week
+	const iteration1 = _.groupBy(iteration0, 'label');
+	const labels = Object.getOwnPropertyNames(iteration1);
+	const mostRecentEntries = labels.map(key => _.maxBy(iteration1[key], 'created'));
+	const limits = mostRecentEntries.map(item => item.limit);
+	const values = mostRecentEntries.map(item => item.value);
+
+	// fills history data for chart
+	Object.assign(history.data, {
+		labels: labels,
+		series: [limits, values]
+	});
+
+	return history;
+};
 
 export const startListeningToHistory = () => (dispatch) => {
-	goalsRef.on('value', (snapshot) => {
-		var tmpData = [{
-		  "data": {
-		    "labels": [
-		      "W1",
-		      "W2",
-		      "W3",
-		      "W4",
-		      "W5"
-		    ],
-		    "series": [
-		      [
-		        0,
-		        1,
-		        2,
-		        3,
-		        4,
-		        5
-		      ]
-		    ]
-		  },
-		  "options": {
-		    "high": 15,
-		    "low": 0,
-		    "axisY": {
-		      "showLabel": false,
-		      "showGrid": false
-		    },
-		    "axisX": {
-		      "showLabel": false,
-		      "showGrid": false
-		    },
-		    "showPoint": true,
-		    "showArea": true,
-		    "lineSmooth": true,
-		    "chartPadding": {
-		      "top": 0,
-		      "right": 0,
-		      "bottom": 0,
-		      "left": 0
-		    }
-		  },
-		  "chartType": "Bar"
-		}];
-
+	historyRef.on('value', (snapshot) => {
+		const serverData = snapshot.val();
+		const keys = Object.getOwnPropertyNames(serverData);
+		let data = {};
+		keys.forEach(key => {
+			data[key] = mapToHistory(serverData[key]);
+		});
 		dispatch({
       type: constants.RECEIVE_HISTORY_DATA,
-			data: tmpData
-      // data: mapToHistory(snapshot.val())
+      data: data
     });
 	});
 };

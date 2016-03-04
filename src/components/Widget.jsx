@@ -24,7 +24,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) =>
       cardStatus = "green";
   }
 
-  const chartWidget = chartData ? <Chart chartData={chartData} /> : null;
+  const chartWidget = chartData && chartData.chartType ? <Chart chartData={chartData} /> : null;
 
   if(allowEdit) {
     menuIcon = (
