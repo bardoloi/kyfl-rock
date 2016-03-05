@@ -57,7 +57,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
   }
 
   return (
-    <Card className={"widget " + cardStatus}>
+    <Card className={"animated flipInX widget " + cardStatus}>
       <CardHeader
         className="widget-header"
         title={<span className="widget-title">{widgetData.title}</span>}
