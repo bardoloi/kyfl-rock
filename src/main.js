@@ -18,7 +18,6 @@ import store from './stores';
 // actions
 import * as authActions from './actions/authActions';
 import * as widgetListActions from './actions/widgetListActions';
-import * as historyActions from './actions/historyActions';
 
 // components
 import AppContainer from './containers/AppContainer.jsx';
@@ -40,5 +39,4 @@ ReactDOM.render(
 setTimeout(function(){
     store.dispatch(authActions.startListeningToAuth());
     store.dispatch(widgetListActions.startListeningToWidgetList());
-    store.dispatch(historyActions.startListeningToHistory());
 });

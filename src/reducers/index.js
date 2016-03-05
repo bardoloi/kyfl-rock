@@ -4,13 +4,11 @@ import {combineReducers} from 'redux';
 import auth from '../reducers/authReducer';
 import notification from '../reducers/notificationReducer';
 import widgetList from '../reducers/widgetListReducer';
-import history from '../reducers/historyReducer';
 
 const rootReducer = combineReducers({
   auth,
   notification,
-  widgetList,
-  history
+  widgetList
 });
 
 export default rootReducer;

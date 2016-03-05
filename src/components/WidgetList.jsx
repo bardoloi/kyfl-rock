@@ -3,7 +3,7 @@ import '../scss/widget-list.scss';
 
 import Widget from '../components/Widget.jsx';
 
-const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, history }) => {
+const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
@@ -15,7 +15,6 @@ const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, history }) 
           onDecrease={() => onDecrease(key)}
           onIncrease={() => onIncrease(key)}
           widgetData={widgetList[key]}
-          chartData={history[key]}
         />
       ))}
     </div>

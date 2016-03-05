@@ -6,8 +6,7 @@ import WidgetList from '../components/WidgetList.jsx';
 const mapStateToProps = (state) => {
   return {
     allowEdit: state.auth.uid,
-    widgetList: state.widgetList,
-    history: state.history
+    widgetList: state.widgetList
   };
 };
 

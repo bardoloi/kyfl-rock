@@ -1,6 +1,11 @@
+// misc libraries
 import React from 'react';
+
+// styling
 import '../scss/widget.scss';
-import Chart from '../components/Chart.jsx';
+
+// child component
+import Progress from '../components/Progress.jsx';
 
 // material-ui components
 import Card from 'material-ui/lib/card/card';
@@ -13,7 +18,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import Divider from 'material-ui/lib/divider';
 import FontIcon from 'material-ui/lib/font-icon';
 
-const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) => {
+const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
   let menuIcon = null, cardStatus = null, percentComplete = widgetData.value / widgetData.limit * 100;
 
   if (percentComplete < 50) {
@@ -24,7 +29,8 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) =>
       cardStatus = "green";
   }
 
-  const chartWidget = chartData && chartData.chartType ? <Chart chartData={chartData} /> : null;
+  widgetData.percentComplete = percentComplete;
+  widgetData.color = cardStatus;
 
   if(allowEdit) {
     menuIcon = (
@@ -55,11 +61,11 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, chartData }) =>
       <CardHeader
         className="widget-header"
         title={<span className="widget-title">{widgetData.title}</span>}
-        subtitle={<span className="widget-subtitle">{widgetData.value + ` / ` + widgetData.limit}</span>}
+        subtitle={<span className="widget-subtitle"><span style={{color: cardStatus}}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}
-        {chartWidget}
+        <Progress progressData={widgetData} />
       </CardHeader>
     </Card>
   );

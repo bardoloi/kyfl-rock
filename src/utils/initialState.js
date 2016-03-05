@@ -11,6 +11,5 @@ export default {
     title: null,
     msgType: constants.INFO
   },
-  widgetList: {},
-  history: {}
+  widgetList: {}
 };
