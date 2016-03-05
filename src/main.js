@@ -4,6 +4,7 @@ import 'babel-polyfill';
 import 'fastclick';
 import 'font-awesome-sass-loader';
 import './scss/main.scss';
+import './utils/dateUtils';
 
 // linbraries and tools
 import React from 'react';

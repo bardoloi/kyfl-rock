@@ -24,34 +24,36 @@ $green: #0AD54B;
       display: flex;
       align-items: center;
 
-      @media screen and (max-width: $small-screen) {
-          padding: 5px !important;
-      }
-
       .widget-iconmenu {
           position: absolute !important;
           right: 0;
+          z-index: 2;
       }
     }
 
-    @media screen and (max-width: $small-screen) {
-        height: auto;
-        padding: 5px 0;
-    }
-
-    .widget-title {
-        font-size: 26px;
-
-        @media screen and (max-width: $small-screen) {
-            font-size: 14px;
-        }
+    .widget-title,
+    .widget-subtitle {
+        font-size: 1.5em;
     }
 
     .widget-subtitle {
-        font-size: 24px;
-
-        @media screen and (max-width: $small-screen) {
-            font-size: 14px;
-        }
+      opacity: 0.7;
     }
+}
+
+
+@media screen and (max-width: $small-screen) {
+  .widget {
+    height: auto;
+    padding: 5px 0;
+
+    .widget-header {
+      padding: 5px !important;
+    }
+
+    .widget-title,
+    .widget-subtitle {
+        font-size: 1em;
+    }
+  }
 }

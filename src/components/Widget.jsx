@@ -1,5 +1,11 @@
+// misc libraries
 import React from 'react';
+
+// styling
 import '../scss/widget.scss';
+
+// child component
+import Progress from '../components/Progress.jsx';
 
 // material-ui components
 import Card from 'material-ui/lib/card/card';
@@ -22,6 +28,9 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
   } else {
       cardStatus = "green";
   }
+
+  widgetData.percentComplete = percentComplete;
+  widgetData.color = cardStatus;
 
   if(allowEdit) {
     menuIcon = (
@@ -52,10 +61,11 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
       <CardHeader
         className="widget-header"
         title={<span className="widget-title">{widgetData.title}</span>}
-        subtitle={<span className="widget-subtitle">{widgetData.value + ` / ` + widgetData.limit}</span>}
+        subtitle={<span className="widget-subtitle"><span style={{color: cardStatus}}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}
+        <Progress progressData={widgetData} />
       </CardHeader>
     </Card>
   );

@@ -10,7 +10,7 @@ const displayNotification = (title, msg, msgType) => (dispatch) => {
   });
 };
 
-export const success = (msg) => displayNotification(`Success`, msg, constants.SUCCESS);
+export const success = (msg) => displayNotification(`Notification`, msg, constants.SUCCESS);
 export const info = (msg) => displayNotification(`Info`, msg, constants.INFO);
 export const warning = (msg) => displayNotification(`Warning`, msg, constants.WARNING);
 export const error = (msg) => displayNotification(`Error`, msg, constants.ERROR);

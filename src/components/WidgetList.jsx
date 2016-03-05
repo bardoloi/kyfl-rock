@@ -7,7 +7,7 @@ const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
-    <div className="dashboard-wrapper">
+    <div className="widget-list-wrapper">
       {properties.map((key) => (
         <Widget
           allowEdit={allowEdit}

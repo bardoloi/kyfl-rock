@@ -4,10 +4,10 @@ import initialState from '../utils/initialState';
 const widgetListReducer = (state = initialState.widgetList, action) => {
   switch (action.type) {
     case constants.INCREASE_WIDGET_VALUE:
-      return Object.getOwnPropertyNames(state).map(key => widgetReducer(state[key], action));
+      return state.map(widget => widgetReducer(widget, action));
 
     case constants.DECREASE_WIDGET_VALUE:
-      return Object.getOwnPropertyNames(state).map(key => widgetReducer(state[key], action));
+      return state.map(widget => widgetReducer(widget, action));
 
     case constants.RECEIVE_WIDGETLIST_DATA:
       return Object.assign({}, state, action.data);
