@@ -1,44 +1,41 @@
-$small-screen: 500px;
-$red: #E91010;
-$orange: #FF9E1E;
-$green: #0AD54B;
+@import "./variables.scss";
 
 .widget {
-    width: 450px;
-    height: 135px;
-    margin: 15px;
-    padding: 20px 5px;
+  width: 450px;
+  height: 135px;
+  margin: 15px;
+  padding: 20px 5px;
 
-    &.red {
-        border-left: 4px solid $red;
-    }
-    &.orange {
-        border-left: 4px solid $orange;
-    }
-    &.green {
-        border-left: 4px solid $green;
-    }
+  &.red {
+      border-left: 4px solid $red;
+  }
+  &.orange {
+      border-left: 4px solid $orange;
+  }
+  &.green {
+      border-left: 4px solid $green;
+  }
 
-    .widget-header {
-      height: auto !important;
-      display: flex;
-      align-items: center;
+  .widget-header {
+    height: auto !important;
+    display: flex;
+    align-items: center;
 
-      .widget-iconmenu {
-          position: absolute !important;
-          right: 0;
-          z-index: 2;
-      }
+    .widget-iconmenu {
+        position: absolute !important;
+        right: 0;
+        z-index: 2;
     }
+  }
 
-    .widget-title,
-    .widget-subtitle {
-        font-size: 1.5em;
-    }
+  .widget-title,
+  .widget-subtitle {
+      font-size: 1.5em;
+  }
 
-    .widget-subtitle {
-      opacity: 0.7;
-    }
+  .widget-subtitle {
+    opacity: 0.7;
+  }
 }
 
 
