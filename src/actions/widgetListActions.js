@@ -11,7 +11,7 @@ const setHistory = (action, key, state) => {
   newRef.push({
     createdBy: state.auth.username,
     currentLimit: widget.limit,
-    currentValue: action.INCREASE_WIDGET_VALUE
+    currentValue: action === constants.INCREASE_WIDGET_VALUE
       ? (widget.value + 1)
       : (widget.value > 0 ? widget.value - 1 : widget.value),
     previousValue: widget.value,
