@@ -3,7 +3,7 @@ import '../scss/widget-list.scss';
 
 import Widget from '../components/Widget.jsx';
 
-const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
+const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit, onTakeOwnership }) => {
   const properties = Object.getOwnPropertyNames(widgetList);
 
   return (
@@ -14,6 +14,7 @@ const WidgetList = ({ widgetList, onIncrease, onDecrease, allowEdit }) => {
           key={key}
           onDecrease={() => onDecrease(key)}
           onIncrease={() => onIncrease(key)}
+          onTakeOwnership={() => onTakeOwnership(key)}
           widgetData={widgetList[key]}
         />
       ))}
