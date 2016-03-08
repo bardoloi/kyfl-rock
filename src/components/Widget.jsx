@@ -61,7 +61,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
       <CardHeader
         className="widget-header"
         title={<span className="widget-title">{widgetData.title}</span>}
-        subtitle={<span className="widget-subtitle"><span style={{color: cardStatus}}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
+        subtitle={<span className="widget-subtitle"><span className={cardStatus}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}

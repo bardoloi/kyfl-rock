@@ -5,12 +5,11 @@ import '../scss/progress.scss';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
 const Progress = ({progressData}) => (
-  <div className="progress">
+  <div className={"progress " + progressData.color}>
      <CircularProgress
        mode="determinate"
        value={progressData.percentComplete}
        size={1.1}
-       color={progressData.color}
      />
   </div>
 );
