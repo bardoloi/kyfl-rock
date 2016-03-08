@@ -11,7 +11,6 @@ const Progress = ({progressData}) => (
        value={progressData.percentComplete}
        size={1.1}
        color={progressData.color}
-       style={{WebkitTransform: 'rotate(-90deg)', transform: 'rotate(-90deg)'}}
      />
   </div>
 );
