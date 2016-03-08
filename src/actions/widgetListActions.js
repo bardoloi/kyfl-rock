@@ -1,4 +1,5 @@
 import * as constants from '../constants';
+import * as notificationActions from '../actions/notificationActions';
 import Firebase from 'firebase';
 
 const goalsRef = new Firebase(constants.FIREBASE).child('goals');
@@ -23,6 +24,9 @@ const setHistory = (action, key, state) => {
 export const decreaseWidgetValue = (key) => (dispatch, getState) => {
   goalsRef.child(key).transaction((data) => {
     data.value = data.value > 0 ? data.value - 1 : data.value;
+    if (data.limit - data.value === 1) {
+      dispatch(notificationActions.info(`Whoa! Wrong way junior!!!`));
+    }
     return data;
   }, (error) => {
     if (error) {
@@ -36,6 +40,11 @@ export const decreaseWidgetValue = (key) => (dispatch, getState) => {
 export const increaseWidgetValue = (key) => (dispatch, getState) => {
   goalsRef.child(key).transaction((data) => {
     data.value = data.value + 1;
+    if (data.value === data.limit) {
+      dispatch(notificationActions.success(`Sweeeeet! This task is completed! Nice Work!`));
+    } else if (data.value > data.limit) {
+      dispatch(notificationActions.success(`Look out, we have a badass over here! Overachiever...`));
+    }
     return data;
   }, (error) => {
     if (error) {

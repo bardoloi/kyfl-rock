@@ -32,6 +32,19 @@
   .widget-subtitle {
       font-size: 1.5em;
   }
+  .widget-subtitle{
+    span{
+      &.red{
+        color: $red;
+      }
+      &.orange{
+        color: $orange;
+      }
+      &.green{
+        color: $green;
+      }
+    }
+  }
 }
 
 
