@@ -5,9 +5,8 @@
   top: 7px;
   left: 7px;
   z-index: 1;
-  opacity: 1;
-  -webkit-transform: 'rotate(-90deg)';
-  transform: 'rotate(-90deg)';
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 @media screen and (max-width: $small-screen) {
