@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as authActions from '../actions/authActions';
 import * as notificationActions from '../actions/notificationActions';
+import * as widgetListActions from '../actions/widgetListActions';
 import AppMainBar from '../components/AppMainBar.jsx';
 
 const mapStateToProps = (state) => {
@@ -12,8 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: () => { dispatch(authActions.attemptLogin()); },
-    logoutUser: () => { dispatch(authActions.logoutUser()); }
+    onAttemptLogin: () => { dispatch(authActions.attemptLogin()); },
+    onLogoutUser: () => { dispatch(authActions.logoutUser()); },
+    onResetData: () => { dispatch(widgetListActions.resetWidgetListToDefault()); }
   };
 };
 

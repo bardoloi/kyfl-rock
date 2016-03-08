@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Divider from 'material-ui/lib/divider';
 
-const AppMainBar = ({auth, logoutUser, attemptLogin}) => {
+const AppMainBar = ({auth, onLogoutUser, onAttemptLogin, onResetData}) => {
   let iconElementRight = null;
 
   switch (auth.currently) {
@@ -22,8 +22,9 @@ const AppMainBar = ({auth, logoutUser, attemptLogin}) => {
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
           <MenuItem primaryText={`Signed in as ` + auth.username} disabled />
+          <MenuItem primaryText={`Reset to Default`} onTouchTap={onResetData} />
           <Divider />
-          <MenuItem primaryText={`Log out`} onTouchTap={logoutUser} />
+          <MenuItem primaryText={`Log out`} onTouchTap={onLogoutUser} />
         </IconMenu>
       );
       break;
@@ -36,7 +37,7 @@ const AppMainBar = ({auth, logoutUser, attemptLogin}) => {
 
     default:
       iconElementRight = (
-        <FlatButton label={`Log in`} onClick={attemptLogin} />
+        <FlatButton label={`Log in`} onClick={onAttemptLogin} />
       );
       break;
   }
@@ -45,7 +46,7 @@ const AppMainBar = ({auth, logoutUser, attemptLogin}) => {
     <AppBar
       title={`KYFL-ROCK`}
       showMenuIconButton={false}
-      iconElementRight={ iconElementRight }  />
+      iconElementRight={iconElementRight}  />
   );
 };
 

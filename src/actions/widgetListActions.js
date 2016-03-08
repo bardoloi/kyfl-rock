@@ -54,3 +54,20 @@ export const startListeningToWidgetList = () => (dispatch) => {
     });
 	});
 };
+
+export const resetWidgetListToDefault = () => (dispatch, getState) => {
+  const keys = Object.getOwnPropertyNames(getState().widgetList);
+  keys.forEach(key => {
+    // reset to Zero all except for goal1 - "People off the bench"
+    if(key !== 'goal1') {
+      goalsRef.child(key).transaction(data => {
+        data.value = 0;
+        return data;
+      }, error => {
+        if (error) {
+          console.log('Firebase transaction failed abnormally!', error);
+        }
+      });
+    }
+  });
+}
