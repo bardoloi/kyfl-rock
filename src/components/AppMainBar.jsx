@@ -21,7 +21,7 @@ const AppMainBar = ({auth, onLogoutUser, onAttemptLogin, onResetData}) => {
           targetOrigin={{horizontal: 'right', vertical: 'top'}}
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-          <MenuItem primaryText={`Signed in as ` + auth.username} disabled />
+          <MenuItem primaryText={`Signed in as ` + auth.displayName} disabled />
           <MenuItem primaryText={`Reset to Default`} onTouchTap={onResetData} />
           <Divider />
           <MenuItem primaryText={`Log out`} onTouchTap={onLogoutUser} />
@@ -44,7 +44,7 @@ const AppMainBar = ({auth, onLogoutUser, onAttemptLogin, onResetData}) => {
 
   return (
     <AppBar
-      title={`KYFL-ROCK`}
+      title={`KYFL-ROCK - Dry Land`}
       showMenuIconButton={false}
       iconElementRight={iconElementRight}  />
   );

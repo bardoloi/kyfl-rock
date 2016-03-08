@@ -1,5 +1,6 @@
 import * as constants from '../constants';
 import * as notificationActions from '../actions/notificationActions';
+import * as usersActions from '../actions/usersActions';
 import Firebase from 'firebase';
 
 const fireRef = new Firebase(constants.FIREBASE);
@@ -8,18 +9,22 @@ export const startListeningToAuth = () => (dispatch, getState) => {
   fireRef.onAuth((authData) => {
     if (authData) {
       if(authData.provider === 'google' && authData.google && authData.google.email.toLowerCase().match(new RegExp(constants.VALID_DOMAIN, 'i'))) {
-        dispatch({
+        const auth = {
           type: constants.LOGIN_USER,
           uid: authData.uid,
-          username: authData.google.displayName || authData.google.username
-        });
+          displayName: authData.google.displayName || authData.google.username,
+          email: authData.google.email,
+          imageURL: authData.google.profileImageURL
+        };
 
-        dispatch(notificationActions.success(`Signed in as \n` + authData.google.email + `!`));
+        dispatch(auth);
+        usersActions.registerUser(auth);
+        dispatch(notificationActions.success(`Welcome, \n` + auth.displayName + `!`));
       } else {
 
         dispatch({ type: constants.LOGOUT });
         fireRef.unauth();
-        dispatch(notificationActions.warning(`Your domain is not permitted!`));
+        dispatch(notificationActions.warning(`Sorry, but your domain is not permitted!`));
       }
 
     } else if (getState().auth.currently !== constants.ANONYMOUS) {
@@ -44,5 +49,5 @@ export const attemptLogin = () => (dispatch, getState) => {
 export const logoutUser = () => (dispatch, getState) => {
   dispatch({ type: constants.LOGOUT });
   fireRef.unauth();
-  dispatch(notificationActions.success(`Successfully signed out!`));
+  dispatch(notificationActions.success(`See you soon!`));
 };

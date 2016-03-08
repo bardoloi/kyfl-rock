@@ -3,8 +3,10 @@ import * as constants from '../constants';
 export default {
   auth: {
     currently: constants.ANONYMOUS,
-    username: null,
-    uid: null
+    displayName: 'guest',
+    uid: null,
+    email: null,
+    imageURL: null
   },
   notification: {
     msg: null,

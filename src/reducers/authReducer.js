@@ -4,25 +4,21 @@ import initialState from '../utils/initialState';
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.ATTEMPTING_LOGIN:
-      return {
+      return Object.assign({}, initialState, {
         currently: constants.AWAITING_AUTH_RESPONSE,
-        username: 'guest',
-        uid: null
-      };
+      });
 
     case constants.LOGOUT:
-      return {
-        currently: constants.ANONYMOUS,
-        username: 'guest',
-        uid: null
-      };
+      return Object.assign({}, initialState);
 
     case constants.LOGIN_USER:
-      return {
+      return Object.assign({}, initialState, {
         currently: constants.LOGGED_IN,
-        username: action.username,
-        uid: action.uid
-      };
+        displayName: action.displayName,
+        uid: action.uid,
+        email: action.email,
+        imageURL: action.imageURL
+      });
 
     default:
         return state;
