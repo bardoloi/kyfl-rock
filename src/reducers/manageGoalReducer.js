@@ -11,6 +11,16 @@ const manageGoalReducer = (state = initialState.manageGoal, action) => {
     case constants.MANAGE_GOAL_CANCEL:
       return Object.assign({}, initialState.manageGoal);
 
+    case constants.MANAGE_GOAL_ENABLE_SUBMIT:
+      return Object.assign({}, state, {
+        canSubmit: true
+      });
+
+    case constants.MANAGE_GOAL_DISABLE_SUBMIT:
+      return Object.assign({}, state, {
+        canSubmit: false
+      });
+
     default:
       return state;
   }

@@ -1,4 +1,9 @@
 import * as constants from '../constants';
+import * as notificationActions from '../actions/notificationActions';
+import initialState from '../utils/initialState';
+import Firebase from 'firebase';
+
+const goalsRef = new Firebase(constants.FIREBASE).child('goals');
 
 export const show = () => {
   return {
@@ -12,14 +17,29 @@ export const cancel = () => {
   };
 };
 
-export const save = () => {
+export const enableSubmit = () => {
   return {
-    type: constants.MANAGE_GOAL_SAVE
+    type: constants.MANAGE_GOAL_ENABLE_SUBMIT
   };
 };
 
-export const close = () => {
+export const disableSubmit = () => {
   return {
-    type: constants.MANAGE_GOAL_CLOSE
+    type: constants.MANAGE_GOAL_DISABLE_SUBMIT
   };
+};
+
+export const submit = (model) => (dispatch, getState) => {
+  const widget = Object.assign({}, initialState.manageGoal.model, model);
+  goalsRef.push(widget, (error) => {
+    if (error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
+      console.log('Firebase transaction failed abnormally!', error);
+    } else {
+      dispatch(notificationActions.success(`Yeah! New goal successfully created!`));
+      dispatch({
+        type: constants.MANAGE_GOAL_CANCEL
+      });
+    }
+  });
 };

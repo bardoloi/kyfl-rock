@@ -15,7 +15,16 @@ export default {
   },
   widgetList: {},
   manageGoal: {
+    canSubmit: false,
     isVisible: false,
-    model: null
+    model: {
+      title: null,
+      limit: null,
+      value: 0,
+      avatar: 'https://s-media-cache-ak0.pinimg.com/736x/12/f6/d1/12f6d18125126757df29e733051697b8.jpg'
+    },
+    errorMessages: {
+      onlyNumeric: 'Please only numbers'
+    }
   }
 };

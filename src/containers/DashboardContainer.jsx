@@ -23,12 +23,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    // widget list
     onDecrease: (id) => dispatch(widgetListActions.decreaseWidgetValue(id)),
     onIncrease: (id) => dispatch(widgetListActions.increaseWidgetValue(id)),
     onTakeOwnership: (id) => dispatch(widgetListActions.takeOwnership(id)),
+
+    // mange goal form
     handleShowManageGoal: () => dispatch(goalActions.show()),
     handleCancelManageGoal: () => dispatch(goalActions.cancel()),
-    handleSaveManageGoal: () => {}
+    handleValidForm: () => dispatch(goalActions.enableSubmit()),
+    handleInvalidForm: () => dispatch(goalActions.disableSubmit()),
+    handleSubmitForm: (model) => dispatch(goalActions.submit(model))
   };
 };
 
@@ -53,10 +58,14 @@ const DashboardContainer = (props) => {
         widgetList={props.widgetList}
       />
       <ManageGoal
+        canSubmit={props.manageGoal.canSubmit}
         isVisible={props.manageGoal.isVisible}
         model={props.manageGoal.model}
+        errorMessages={props.manageGoal.errorMessages}
         handleCancel={props.handleCancelManageGoal}
-        handleSave={props.handleSaveManageGoal}
+        handleValidForm={props.handleValidForm}
+        handleInvalidForm={props.handleInvalidForm}
+        handleSubmitForm={props.handleSubmitForm}
       />
     </div>
   );
