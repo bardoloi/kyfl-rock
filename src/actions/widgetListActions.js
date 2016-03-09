@@ -31,6 +31,7 @@ export const decreaseWidgetValue = (key) => (dispatch, getState) => {
     return data;
   }, (error) => {
     if (error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
       console.log('Firebase transaction failed abnormally!', error);
     } else {
       setHistory(constants.DECREASE_WIDGET_VALUE, key, getState());
@@ -49,6 +50,7 @@ export const increaseWidgetValue = (key) => (dispatch, getState) => {
     return data;
   }, (error) => {
     if (error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
       console.log('Firebase transaction failed abnormally!', error);
     } else {
       setHistory(constants.INCREASE_WIDGET_VALUE, key, getState());
@@ -61,8 +63,13 @@ export const takeOwnership = (key) => (dispatch, getState) => {
   goalsRef.child(key).update({
     owner: usersActions.getUserKeyFromEmail(auth.email),
     avatar: auth.imageURL
-  }, () => {
-
+  }, (error) => {
+    if(error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
+      console.log('Firebase transaction failed abnormally!', error);
+    } else {
+      dispatch(notificationActions.success(`Awesome! You own it!`));
+    }
   });
 };
 
@@ -85,6 +92,7 @@ export const resetWidgetListToDefault = () => (dispatch, getState) => {
         return data;
       }, error => {
         if (error) {
+          dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
           console.log('Firebase transaction failed abnormally!', error);
         }
       });
