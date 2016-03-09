@@ -13,5 +13,9 @@ export default {
     title: null,
     msgType: constants.INFO
   },
-  widgetList: {}
+  widgetList: {},
+  manageGoal: {
+    isVisible: false,
+    model: null
+  }
 };
