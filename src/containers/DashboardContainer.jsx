@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onDecrease: (id) => dispatch(widgetListActions.decreaseWidgetValue(id)),
-    onIncrease: (id) => dispatch(widgetListActions.increaseWidgetValue(id))
+    onIncrease: (id) => dispatch(widgetListActions.increaseWidgetValue(id)),
+    onTakeOwnership: (id) => dispatch(widgetListActions.takeOwnership(id))
   };
 };
 

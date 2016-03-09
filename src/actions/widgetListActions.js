@@ -1,4 +1,6 @@
 import * as constants from '../constants';
+import * as notificationActions from '../actions/notificationActions';
+import * as usersActions from '../actions/usersActions';
 import Firebase from 'firebase';
 
 const goalsRef = new Firebase(constants.FIREBASE).child('goals');
@@ -23,9 +25,13 @@ const setHistory = (action, key, state) => {
 export const decreaseWidgetValue = (key) => (dispatch, getState) => {
   goalsRef.child(key).transaction((data) => {
     data.value = data.value > 0 ? data.value - 1 : data.value;
+    if (data.limit - data.value === 1) {
+      dispatch(notificationActions.info(`Whoa! Wrong way junior!!!`));
+    }
     return data;
   }, (error) => {
     if (error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
       console.log('Firebase transaction failed abnormally!', error);
     } else {
       setHistory(constants.DECREASE_WIDGET_VALUE, key, getState());
@@ -36,12 +42,33 @@ export const decreaseWidgetValue = (key) => (dispatch, getState) => {
 export const increaseWidgetValue = (key) => (dispatch, getState) => {
   goalsRef.child(key).transaction((data) => {
     data.value = data.value + 1;
+    if (data.value === data.limit) {
+      dispatch(notificationActions.success(`Sweeeeet! This task is completed! Nice Work!`));
+    } else if (data.value > data.limit) {
+      dispatch(notificationActions.success(`Look out, we have a badass over here! Overachiever...`));
+    }
     return data;
   }, (error) => {
     if (error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
       console.log('Firebase transaction failed abnormally!', error);
     } else {
       setHistory(constants.INCREASE_WIDGET_VALUE, key, getState());
+    }
+  });
+};
+
+export const takeOwnership = (key) => (dispatch, getState) => {
+  const auth = getState().auth;
+  goalsRef.child(key).update({
+    owner: usersActions.getUserKeyFromEmail(auth.email),
+    avatar: auth.imageURL
+  }, (error) => {
+    if(error) {
+      dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
+      console.log('Firebase transaction failed abnormally!', error);
+    } else {
+      dispatch(notificationActions.success(`Awesome! You own it!`));
     }
   });
 };
@@ -65,6 +92,7 @@ export const resetWidgetListToDefault = () => (dispatch, getState) => {
         return data;
       }, error => {
         if (error) {
+          dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
           console.log('Firebase transaction failed abnormally!', error);
         }
       });

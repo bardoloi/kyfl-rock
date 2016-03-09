@@ -18,7 +18,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import Divider from 'material-ui/lib/divider';
 import FontIcon from 'material-ui/lib/font-icon';
 
-const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
+const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, onTakeOwnership }) => {
   let menuIcon = null, cardStatus = null, percentComplete = widgetData.value / widgetData.limit * 100;
 
   if (percentComplete < 50) {
@@ -50,6 +50,11 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
           leftIcon={<FontIcon className="fa fa-arrow-circle-down" />}
           onTouchTap={onDecrease}
         />
+        <MenuItem
+          primaryText="Take Ownership"
+          leftIcon={<FontIcon className="fa fa-bullhorn" />}
+          onTouchTap={onTakeOwnership}
+        />
         <Divider />
         <MenuItem primaryText="Cancel" />
       </IconMenu>
@@ -61,7 +66,7 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit }) => {
       <CardHeader
         className="widget-header"
         title={<span className="widget-title">{widgetData.title}</span>}
-        subtitle={<span className="widget-subtitle"><span style={{color: cardStatus}}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
+        subtitle={<span className="widget-subtitle"><span className={cardStatus}>{widgetData.value}</span>{` | ` + widgetData.limit}</span>}
         avatar={<Avatar size={60} src={widgetData.avatar} />}
       >
         {menuIcon}

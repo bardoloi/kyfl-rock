@@ -3,8 +3,10 @@ import Firebase from 'firebase';
 
 const usersRef = new Firebase(constants.FIREBASE).child('users');
 
+export const getUserKeyFromEmail = (email) => email.replace(/[^a-zA-Z0-9]/g,'_');
+
 export const registerUser = (user) => {
-  const key = user.email.replace(/[^a-zA-Z0-9]/g,'_');
+  const key = getUserKeyFromEmail(user.email);
 
   usersRef.once('value', function(snapshot) {
     const isUserIn = snapshot.child(key).exists();
