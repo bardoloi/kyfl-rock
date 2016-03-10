@@ -26,5 +26,10 @@ export default {
     errorMessages: {
       onlyNumeric: 'Please only numbers'
     }
+  },
+  confirmation: {
+    isVisible: false,
+    msg: 'Are you sure do you want to proceed?',
+    title: 'Confirmation'
   }
 };

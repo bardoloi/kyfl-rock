@@ -20,6 +20,10 @@ export const INFO = 'INFO';
 export const WARNING = 'WARNING';
 export const ERROR = 'ERROR';
 
+// confirmation
+export const CONFIRM = 'CONFIRM';
+export const CONFIRM_CANCEL = 'CONFIRM_CANCEL';
+
 // dashboard
 export const INCREASE_WIDGET_VALUE = 'INCREASE_WIDGET_VALUE';
 export const DECREASE_WIDGET_VALUE = 'DECREASE_WIDGET_VALUE';

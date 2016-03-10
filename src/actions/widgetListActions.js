@@ -1,5 +1,6 @@
 import * as constants from '../constants';
 import * as notificationActions from '../actions/notificationActions';
+import * as confirmationActions from '../actions/confirmationActions';
 import * as usersActions from '../actions/usersActions';
 import Firebase from 'firebase';
 
@@ -11,7 +12,7 @@ const setHistory = (action, key, state) => {
   const currDate = new Date();
   const newRef = historyRef.child(key);
   newRef.push({
-    createdBy: state.auth.username,
+    createdBy: state.auth.displayName,
     currentLimit: widget.limit,
     currentValue: action === constants.INCREASE_WIDGET_VALUE
       ? (widget.value + 1)
@@ -71,6 +72,24 @@ export const takeOwnership = (key) => (dispatch, getState) => {
       dispatch(notificationActions.success(`Awesome! You own it!`));
     }
   });
+};
+
+export const removeWidget = (key) => (dispatch, getState) => {
+  dispatch(confirmationActions.confirm({
+    title: 'Delete Confirmation',
+    msg: 'Are you sure do you want to proceed deleting this goal?',
+    handleConfirm: () => {
+      goalsRef.child(key).set(null, (error) => {
+        if(error) {
+          dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
+          console.log('Firebase transaction failed abnormally!', error);
+        } else {
+          dispatch(confirmationActions.cancel());
+          dispatch(notificationActions.success(`Goal successfully removed!`));
+        }
+      });
+    }
+  }));
 };
 
 export const startListeningToWidgetList = () => (dispatch) => {

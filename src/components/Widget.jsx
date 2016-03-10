@@ -18,7 +18,14 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import Divider from 'material-ui/lib/divider';
 import FontIcon from 'material-ui/lib/font-icon';
 
-const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, onTakeOwnership }) => {
+const Widget = ({
+    widgetData,
+    onIncrease,
+    onDecrease,
+    allowEdit,
+    onTakeOwnership,
+    onRemove
+  }) => {
   let menuIcon = null, cardStatus = null, percentComplete = widgetData.value / widgetData.limit * 100;
 
   if (percentComplete < 50) {
@@ -54,6 +61,11 @@ const Widget = ({ widgetData, onIncrease, onDecrease, allowEdit, onTakeOwnership
           primaryText="Take Ownership"
           leftIcon={<FontIcon className="fa fa-bullhorn" />}
           onTouchTap={onTakeOwnership}
+        />
+        <MenuItem
+          primaryText="Remove"
+          leftIcon={<FontIcon className="fa fa-warning" />}
+          onTouchTap={onRemove}
         />
         <Divider />
         <MenuItem primaryText="Cancel" />

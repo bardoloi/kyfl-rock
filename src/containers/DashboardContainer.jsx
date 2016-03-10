@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     onDecrease: (id) => dispatch(widgetListActions.decreaseWidgetValue(id)),
     onIncrease: (id) => dispatch(widgetListActions.increaseWidgetValue(id)),
     onTakeOwnership: (id) => dispatch(widgetListActions.takeOwnership(id)),
+    onRemove: (id) => dispatch(widgetListActions.removeWidget(id)),
 
     // mange goal form
     handleShowManageGoal: () => dispatch(goalActions.show()),
@@ -56,6 +57,10 @@ const DashboardContainer = (props) => {
       <WidgetList
         allowEdit={props.allowEdit}
         widgetList={props.widgetList}
+        onDecrease={props.onDecrease}
+        onIncrease={props.onIncrease}
+        onTakeOwnership={props.onTakeOwnership}
+        onRemove={props.onRemove}
       />
       <ManageGoal
         canSubmit={props.manageGoal.canSubmit}
