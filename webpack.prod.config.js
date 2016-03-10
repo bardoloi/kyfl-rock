@@ -13,11 +13,12 @@ module.exports = {
   }
 
   ,plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
-    ,new webpack.optimize.DedupePlugin()
-    ,new webpack.optimize.UglifyJsPlugin({
-      minimize: true
-      ,compress: {
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+    new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
         warnings: false
       }
     })
