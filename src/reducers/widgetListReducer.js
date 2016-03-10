@@ -10,7 +10,7 @@ const widgetListReducer = (state = initialState.widgetList, action) => {
       return state.map(widget => widgetReducer(widget, action));
 
     case constants.RECEIVE_WIDGETLIST_DATA:
-      return Object.assign({}, state, action.data);
+      return Object.assign({}, action.data);
 
     default:
         return state;
