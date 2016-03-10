@@ -3,14 +3,12 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 import initialState from '../utils/initialState';
 
-// A super-simple logger
-var logger = store => next => action => {
-	console.log('\n=====================');
-	console.log('Dispatching', action.type,action);
-	var result = next(action);
-	console.log('next state', store.getState());
-	console.log('=====================');
-	return result;
+const middlewares = [thunk];
+
+if (process.env.NODE_ENV === `development`) {
+  const createLogger = require(`redux-logger`);
+  const logger = createLogger();
+  middlewares.push(logger);
 }
 
-export default applyMiddleware(thunk, logger)(createStore)(rootReducer, initialState);
+export default applyMiddleware(...middlewares)(createStore)(rootReducer, initialState);
