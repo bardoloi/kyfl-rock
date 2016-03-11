@@ -79,7 +79,7 @@ export const removeWidget = (key) => (dispatch, getState) => {
     title: 'Delete Confirmation',
     msg: 'Are you sure do you want to proceed deleting this goal?',
     handleConfirm: () => {
-      goalsRef.child(key).set(null, (error) => {
+      goalsRef.child(key).update({isDeleted: 1}, (error) => {
         if(error) {
           dispatch(notificationActions.error(`Oh no! Firebase transaction failed abnormally!`));
           console.log('Firebase transaction failed abnormally!', error);
@@ -93,7 +93,7 @@ export const removeWidget = (key) => (dispatch, getState) => {
 };
 
 export const startListeningToWidgetList = () => (dispatch) => {
-	goalsRef.on('value', (snapshot) => {
+	goalsRef.orderByChild('isDeleted').equalTo(0).on('value', (snapshot) => {
 		dispatch({
       type: constants.RECEIVE_WIDGETLIST_DATA,
       data: snapshot.val()
